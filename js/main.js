@@ -5,9 +5,13 @@ function main (w, d) {
     const arena = d.getElementById('arena');
     const scoreNode = d.getElementById('score');
     const resolution = 24;
-    const size = 800;
+    const size = Math.min(800, window.innerHeight - 96, document.documentElement.clientHeight - 96, window.innerWidth - 10, document.documentElement.clientWidth - 10);
     const step = size / resolution;
     const grid = {};
+
+    arena.style.width = `${size}px`;
+    arena.style.height = `${size}px`;
+    arena.style.marginBottom = `calc(100vh - ${size}px - 64px)`;
 
     let direction = DIRECTIONS.RIGHT;
     let score = 0;

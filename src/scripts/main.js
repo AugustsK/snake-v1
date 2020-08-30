@@ -1,17 +1,19 @@
 import { Engine } from './modules/engine.js';
 import { Snake, DIRECTIONS, RESULTS } from './modules/snake.js';
+import './../styles/main.scss';
 
 function main (w, d) {
     const arena = d.getElementById('arena');
     const scoreNode = d.getElementById('score');
     const resolution = 24;
     const size = Math.min(800, window.innerHeight - 96, document.documentElement.clientHeight - 96, window.innerWidth - 10, document.documentElement.clientWidth - 10);
-    const step = size / resolution;
     const grid = {};
 
     arena.style.width = `${size}px`;
     arena.style.height = `${size}px`;
     arena.style.marginBottom = `calc(100vh - ${size}px - 64px)`;
+
+    d.documentElement.setAttribute('style', `--grid-items: ${resolution}`);
 
     let direction = DIRECTIONS.RIGHT;
     let score = 0;
@@ -22,10 +24,10 @@ function main (w, d) {
         for (let j = 0; j < resolution; j++) {
             let gridNode = d.createElement('div');
             gridNode.id = `grid-${i}-${j}`;
-            gridNode.style.width = `${step}px`;
-            gridNode.style.height = `${step}px`;
-            gridNode.style.top = `${i * step}px`;
-            gridNode.style.left = `${j * step}px`;
+            gridNode.style.width = `calc(100% / ${resolution})`;
+            gridNode.style.height = `calc(100% / ${resolution})`;
+            gridNode.style.top = `calc((100% / ${resolution}) * ${i})`;
+            gridNode.style.left = `calc((100% / ${resolution}) * ${j})`;
             gridNode.classList.add('grid');
             arena.appendChild(gridNode);
             grid[i][j] = {
@@ -149,4 +151,4 @@ function main (w, d) {
     updateApples();
 }
 
-export { main }
+main(window, document);

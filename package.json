@@ -1,14 +1,11 @@
 {
-  "name": "augusts.dev",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "snake-v1",
+  "version": "0.1.0",
+  "description": "Rudimentary snake game in plain JS and HTML (no canvas, I'm very basic)",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/webpack/bin/webpack.js --config webpack/webpack.config.js"
+    "dist": "./node_modules/webpack/bin/webpack.js --config webpack/webpack.config.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Augusts Karklins <augusts.karklins@gmail.com>",
   "browserslist": [
     "last 2 version",
     "> 1%",
